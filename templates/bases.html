@@ -102,7 +102,7 @@
                     <div class="dropdown-contents">
                       {% if user.is_authenticated %}
 
-                      {% if  request.user.username == 'my-admin' %}
+                      {% if  request.user.username == 'admin' %}
 
                       <a class="userdropitem" href="{% url 'FootBall:admin_dash' %}">Admin DB</a>
                       <a class="userdropitem" href="{% url 'Login:logout' %}">Logout</a>
