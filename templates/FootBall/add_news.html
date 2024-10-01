@@ -1,0 +1,110 @@
+{% extends 'bases.html' %}
+{% load static %}
+{% load custom_tags %}
+{% load crispy_forms_tags %}
+{% block title %} ICFL  News{% endblock title %}
+
+{% block main-content %}
+
+<!-- <div class="hero overlay" style="background-image: url('{% static 'imagess/bg_1.jpg' %}')";>
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-12">
+
+                <div class="col-lg-5 ml-auto">
+
+                    <h2 class="text-white">Admin DashBoard</h2>
+                    <p>To Control All The Information</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<!-- Display team  -->
+<div class="site-section bg-light">
+    <div class="container bg-light ">
+
+
+        <div class="row">
+
+            <div class="col-12 title-section mt-2">
+                <a href="{% url 'FootBall:admin_dash' %}" class="heading">Admin Dashboard</a>
+            </div>
+
+
+
+
+            <div class="navbar col-md-12  d-flex justify-content-center mb-4 bg-dark ">
+
+
+              
+                <a href="{% url 'FootBall:admin_dash' %}" class="m-3 "> <span>Dashboard</span> </a>
+                <a href="{% url 'FootBall:news_list' %}" class="m-3 "> <span>News</span> </a>
+
+
+
+
+            </div>
+
+            <div class="container-fluid ">
+
+
+                <div class="row clearfix">
+                    <div class="col-lg-12  ">
+                        <div class="">
+                            <div class="card-body">
+                                <div class="header text-center bg-light">
+                                    <h2>Add News</h2>
+                                </div>
+
+
+                             
+                                <div class="widget-next-match">
+                                <div class="col-sm-8 offset-sm-1">
+                                    <form action="" method="POST" enctype="multipart/form-data">
+
+                                        
+                                        {% csrf_token %}
+                                        {{ form | crispy }}
+
+                                        <button data-mdb-button-init type="submit" value="Submit" data-mdb-ripple-init
+                                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Add Player</button>
+
+
+                                    </form>
+                                </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock main-content %}

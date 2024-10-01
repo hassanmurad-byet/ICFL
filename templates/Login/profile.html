@@ -1,0 +1,42 @@
+{% extends 'bases.html' %}
+{% load static %}
+
+{% block title %}  ICFL profile {% endblock title %}
+
+
+{% block main-content %}
+
+<div class="hero overlay" style="background-image: url('{% static 'imagess/bg_1.jpg' %}');">
+
+    <div class="row d-flex  justify-content-center align-items-center h-100">
+
+        <div class="col-md-7">
+            <!-- card p-3 py-4 -->
+            <div class="border text-center">
+
+                <div class="text-center">
+                    {% if user.users %}
+                    <a href="{% url 'Login:change_propic' %}"> <img src="/media/{{user.users.pro_pic}}"
+                            class="rounded-circle" width="100px" height="100px"> </a>
+
+                    {% else %}
+
+                    <a href="{% url 'Login:add_propic' %}"> <img src="{% static 'Images/logo.2.png' %}"
+                            class="rounded-circle" width="100px"> </a>
+
+                    {% endif %}
+
+                    <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                    <h5 class="mt-2 mb-0 text-white">{{user.username}}</h5>
+                    <span class="text-white">{{user.email}}</span>
+
+                </div>
+
+                <a href="{% url 'FootBall:team_list' %}" class="btn btn-outline-danger px-4">Join The League </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main-content %}

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <!-- <title>Soccer &mdash; Website by Colorlib</title> -->
+  <title>{% block title %} ICFL {% endblock title %} </title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %} ">
+
+  <link rel="stylesheet" href="{% static 'css/mystyle.css' %} ">
+  
+
+
+
+
+
+
+      <!-- Latest compiled and minified CSS -->
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.0.1/dist/css/bootstrap.min.css"> -->
+  
+      <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jQuery Countdown Plugin -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-countdown/2.2.0/jquery.countdown.min.js"></script> -->
+
+
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+
+
+</head>
+
+<body>
+  
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          <div class="site-logo">
+            <a href="{% url 'FootBall:home' %}">
+              <h1>ICFL</h1>
+              <!-- <img src="{% static  'imagess/logo.png' %}" alt="Logo"> -->
+            </a>
+          </div>
+          <div class="ml-auto">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class=" navbar-nav site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li class="nav-item"><a href="{% url 'FootBall:home' %}" class="nav-link">Home</a></li>
+              
+                <li class="nav-item"><a href="{% url 'FootBall:live_matches'  %}" class="nav-link">Matche Live</a></li>
+           
+                <li class="nav-item"><a href="{% url 'FootBall:players' %}" class="nav-link">Players</a></li>
+                <li class="nav-item"><a href="{% url 'FootBall:blogs' %}" class="nav-link">News</a></li>
+                <li class="nav-item"><a href="{% url 'FootBall:contact' %}" class="nav-link">Contact</a></li>
+
+                <!-- <li class="navbar-body3"> -->
+                  <li class="dropdowns">
+                    {% if user.users %}
+                   <img src="/media/{{user.users.pro_pic}}" class="rounded-circle"  height="30px" width="30px"> </a>
+                    {% else %}
+                     <img src="{% static 'Images/logo.2.png' %}"class="rounded-circle" height="30px" width="30px"> </a>
+                    {% endif %}
+            
+                    <div class="dropdown-contents">
+                      {% if user.is_authenticated %}
+
+                      {% if  request.user.username == 'my-admin' %}
+
+                      <a class="userdropitem" href="{% url 'FootBall:admin_dash' %}">Admin DB</a>
+                      <a class="userdropitem" href="{% url 'Login:logout' %}">Logout</a>
+
+                      {% else %}
+                      <a class="userdropitem" href="{% url 'Login:profile' %}">Profile</a>
+                      <a class="userdropitem" href="{% url 'Login:logout' %}">Logout</a>
+                      {% endif %}
+                      {% else %}
+                      <a class="userdropitem" href="{% url 'Login:signup' %}">Sign Up</a>
+                      <a class="userdropitem" href="{% url 'Login:login' %}">Login</a>
+                     
+                      {% endif %}
+                    
+                    </div>
+                  
+                  </div>
+                <!-- </li> -->
+              </ul>
+            </nav>
+
+            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
+                class="icon-menu h3 text-white"></span></a>
+          </div>
+        </div>
+      </div>
+
+    </header>
+    
+
+<script>
+      document.addEventListener('DOMContentLoaded', function () {
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function () {
+      // Remove active class from all links
+      navLinks.forEach(nav => nav.parentElement.classList.remove('active'));
+      
+      // Add active class to the clicked link's parent
+      this.parentElement.classList.add('active');
+      
+      // Optionally, change color (you can also do this via CSS)
+      navLinks.forEach(nav => nav.style.color = '#333'); // Reset color
+      this.style.color = '#ff002b'; // Change color for active link
+    });
+  });
+});
+</script>
+ 
+
+    {% block main-content %}
+
+
+    
+
+
+
+   {% endblock main-content %}
+
+    <footer class="footer-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="widget mb-3">
+              <h3>News</h3>
+              <ul class="list-unstyled links">
+                <li><a href="#">All</a></li>
+                <li><a href="#">Club News</a></li>
+                <li><a href="#">Media Center</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">RSS</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="widget mb-3">
+              <h3>Tickets</h3>
+              <ul class="list-unstyled links">
+                <li><a href="#">Online Ticket</a></li>
+                <li><a href="#">Payment and Prices</a></li>
+                <li><a href="#">Contact &amp; Booking</a></li>
+                <li><a href="#">Tickets</a></li>
+                <li><a href="#">Coupon</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="widget mb-3">
+              <h3>Matches</h3>
+              <ul class="list-unstyled links">
+                <li><a href="#">Standings</a></li>
+                <li><a href="#">World Cup</a></li>
+                <li><a href="#">La Lega</a></li>
+                <li><a href="#">Hyper Cup</a></li>
+                <li><a href="#">World League</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="widget mb-3">
+              <h3>Social</h3>
+              <ul class="list-unstyled links">
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Youtube</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row text-center">
+          <div class="col-md-12">
+            <div class=" pt-5">
+              <p>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script> All rights reserved | ICFL  <i class="icon-heart"
+                  aria-hidden="true"></i> by <a href="" class="" target="_blank">Hassan_Murad</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+
+
+  </div>
+  <!-- .site-wrap -->
+
+  <script src="{% static '.js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static '.js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static '.js/jquery-ui.js' %}"></script>
+  <script src="{% static '.js/popper.min.js' %}"></script>
+  <script src="{% static '.js/bootstrap.min.js' %}"></script>
+  <script src="{% static '.js/owl.carousel.min.js' %}"></script>
+  <script src="{% static '.js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static '.js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static '.js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static '.js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static '.js/aos.js' %}"></script>
+  <script src="{% static '.js/jquery.fancybox.min.js' %}"></script>
+  <script src="{% static '.js/jquery.sticky.js' %}"></script>
+  <script src="{% static '.js/jquery.mb.YTPlayer.min.js' %}"></script>
+
+
+
+  <script src="{% static '.js/main.js' %}"></script>
+
+
+
+ 
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+{% extends 'bases.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block title %} ICFL Admin Dashboard {% endblock title %}
+
+{% block main-content %}
+
+<!-- <div class="hero overlay" style="background-image: url('{% static 'imagess/bg_1.jpg' %}');">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-12">
+
+                <div class="col-lg-5 ml-auto">
+
+                    <h2 class="text-white">Admin DashBoard</h2>
+                    <p>To Control All The Information</p>
+
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<!-- Display team  -->
+<div class="site-section ">
+    <div class="container ">
+
+
+        <div class="row">
+
+            <div class="col-12 title-section mt-2">
+                <a href="" class="heading">Admin Dashboard</a>
+                <a href="{% url 'Login:profile' %}" >Profile</a>
+
+            </div>
+
+
+
+
+            <div class="navbar col-md-12  d-flex justify-content-center mb-4 bg-dark ">
+
+
+                <a href="{% url 'FootBall:news_list' %}" class="m-3 "> <span>News</span> </a>
+                <a href="{% url 'FootBall:league_list' %}" class="m-3 "> <span>League</span> </a>
+                <a href="{% url 'FootBall:team_purchase' %}" class="m-3 "> <span>Team Purchase</span> </a>
+                <a href="{% url 'FootBall:team_report' %}" class="m-3 "> <span>Team Report</span> </a>
+                <!-- <a href="" class="m-3 "> <span>Matche Report</span> </a> -->
+
+
+
+
+            </div>
+
+
+
+
+
+            <div class="container-fluid ">
+                <div class="clearfix d-flex m-3 p-2 justify-content-center ">
+
+                    <div class=" ">
+                        <a href="{% url 'FootBall:admin_team' %}" class="btn btn-warning py-3 px-4 mr-3">
+                            <h3>{{totalteam}}</h3> Teams
+                        </a>
+                    </div>
+
+                    <div class=" ">
+                        <a href="{% url 'FootBall:player_list' %}" class="btn btn-info py-3 px-4 mr-3">
+                            <h3>{{totalplayer}} </h3> Players
+                        </a>
+                    </div>
+
+                    <div class="">
+                        <a href="{% url 'FootBall:matches_list' %}" class="btn btn-success py-3 px-4 mr-3">
+                            <h3>{{totalmatcher}}</h3> Matches
+                        </a>
+                    </div>
+
+
+
+                    <div class="">
+                        <a href="{% url 'FootBall:referee' %}" class="btn btn-primary py-3 px-4 mr-3" style="background-color: ;">
+                            <h3>{{totalraferee}}</h3>Referee
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="row clearfix">
+                    <div class="col-lg-12  ">
+                        <div class="">
+                            <div class="card-body">
+                                <div class="header text-center bg-light">
+                                    <a href="">Point Table</a>
+                                </div>
+
+
+                                <div class="widget-next-match">
+                                    <table class="table custom-table">
+                                        <thead>
+                                            <tr>
+                                                <th>SL</th>
+                                                <th>Team</th>
+                                                <th>MP</th>
+                                                <th>W</th>
+                                                <th>D</th>
+                                                <th>L</th>
+                                                <th>G S</th>
+                                                <th>G C</th>
+                                                <th>Ps</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for team in teamspoint %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td><strong class="text-white">{{ team.team }}</strong></td>
+                                                <td>{{ team.matches_played }}</td>
+                                                <td>{{ team.wins }}</td>
+                                                <td>{{ team.draws }}</td>
+                                                <td>{{ team.losses }}</td>
+                                                <td>{{ team.goals_scored }}</td>
+                                                <td>{{ team.goals_conceded }}</td>
+                                                <td>{{ team.points }}</td>
+
+
+                                            </tr>
+                                            {% endfor %}
+                                            <tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock main-content %}

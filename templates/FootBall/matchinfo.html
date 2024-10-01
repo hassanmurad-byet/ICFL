@@ -1,0 +1,442 @@
+{% extends 'bases.html' %}
+{% load static %}
+
+{% block title %} ICFL {% endblock title %}
+
+{% block main-content %}
+
+
+<!-- <div class="hero overlay" style="background-image: url('{% static 'imagess/faf.jpg' %}');">
+    <div class="container ">
+        <div class="row align-items-center">
+
+        </div>
+    </div>
+</div> -->
+
+<div class="site-section ">
+ 
+
+
+
+     
+
+    <div class="container mt-4" >
+
+         <!-- widget-next-match -->
+         <div class="container" >
+           
+        
+            <a href=""
+                class="border m-2 p-3 w-100 align-items-center justify-content-center btn btn-dark ">
+                <span class=" ">{{matches.create_at}}</span>
+
+                <div class="d-flex  align-items-center justify-content-center  ">
+                    <span class="pr-3"> {{ matches.left_team }} </span>
+                    <span class="p-3"> <img src="{{ matches.left_team.team_logo.url }}"
+                            alt="Image" height="50px">
+                    </span>
+                    <span class="p-3"> {{ matches.left_score }} - {{ matches.right_score }} </span>
+                    <span class="p-3"> <img src="{{ matches.right_team.team_logo.url }}"
+                            alt="Image" height="50px">
+                    </span>
+
+                    <span class="p-3"> {{ matches.right_team }} </span>
+
+                </div>
+
+                <span class=" ">Referee: {{matches.referee}} <br> Location: {{matches.location}}
+                </span>
+                <div class="event">
+
+                    <!-- for event  -->
+                </div>
+
+            </a>
+         
+
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center site-navbar">
+        <div class="site-navigation position-relative text-right">
+            <ul class="site-menu main-menu mr-auto d-lg-block bg-light">
+                <li><a data-target="#timeline" class="mnav-link" style="cursor: pointer;">TIMELINE</a></li>
+                <li><a data-target="#lineup" class="mnav-link" style="cursor: pointer;">LINE UP</a></li>
+                <li><a data-target="#stats" class="mnav-link" style="cursor: pointer;">STATS</a></li>
+                <li><a data-target="#pointtbale" class="mnav-link" style="cursor: pointer;">TABLE</a></li>
+                <li><a data-target="#highlights" class="mnav-link" style="cursor: pointer;">HIGHLIGHTS</a></li>
+                <li><a href="" class="mnav-link" style="cursor: pointer;">NEWS</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!-- match line_up part -->
+    <div class="latest-news section d-none" id="lineup">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 title-section">
+                    <h2 class="heading">LINE UP</h2>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center "> Associated : {{matches.referee}}</div>
+
+            <div class="row no-gutters ">
+                <div class="team-2 w-50">
+                    <div class="team-details w-100 text-center ">
+                        <h3> <img src="{{ matches.left_team.team_logo.url}}" alt="Image" height="50px">
+                            {{matches.left_team}} <small> {{matches.left_formation}} </small> </h3>
+                        <ul class="list-unstyled ">
+                            <!-- for showing left team player  -->
+                            {% for player in left_team_players %}
+                            <li class=" m-2 p-1 ">{{player.player_jersey_no}}. {{player.player_name}}
+
+                                <!-- show scored player  -->
+                                {% if player in left_team_scoring_p %}
+                                <img src="{% static 'Images/goals.png' %}" alt="Goal Icon" height="20px" />
+                                {% endif %}
+
+                                <!-- show yellow cards player  -->
+                                {% if player in left_team_yellow %}
+                                <img src="{% static 'Images/yellows.png' %}" alt="Yellow Icon" height="20px" />
+                                {% endif %}
+
+                                <!-- show red cards player  -->
+                                {% if player in left_team_red %}
+                                <img src="{% static 'Images/reds.png' %}" alt="Yellow Icon" height="20px" />
+                                {% endif %}
+
+                                <!-- show assit player  -->
+                                {% if player in left_team_assist %}
+                                <img src="{% static 'Images/assists.png' %}" alt="Yellow Icon" height="20px" />
+                                {% endif %}
+
+                                <!-- show assit player  -->
+                                {% if player in player_of_matches %}
+                                <img src="{% static 'Images/player.png' %}" alt="Yellow Icon" height="20px" />
+                                {% endif %}
+
+
+                            </li>
+                            {% endfor %}
+                            <br>
+                            <li class=" m-2 p-1"> Coach Name : {{matches.left_team.coach_name}} </li>
+
+                        </ul>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="team-2 w-50">
+                    <div class="team-details w-100 text-center">
+                        <h3> <small> {{matches.right_formation}} </small> {{ matches.right_team }} <img
+                                src="{{ matches.right_team.team_logo.url}}" alt="Image" height="50px"> </h3>
+
+                        <ul class="list-unstyled">
+                            <!-- for showing right team player  -->
+                            {% for player in right_team_players %}
+                            <li class=" m-2 p-1 ">{{player.player_jersey_no}}. {{player.player_name}}
+
+                                <!-- show scored player  -->
+                                {% if player in right_team_scoring_p %}
+                                <img src="{% static 'Images/goals.png' %}" alt="Goal Icon" height="20px" />
+                                {% endif %}
+
+                                <!-- show yellow card player  -->
+                                {% if player in right_team_yellow %}
+                                <img src="{% static 'Images/yellows.png' %}" alt="Yellow Icon" height="20px" />
+                                {% endif %}
+
+                                <!-- show red cards player  -->
+                                {% if player in right_team_red %}
+                                <img src="{% static 'Images/reds.png' %}" alt="Yellow Icon" height="20px" />
+                                {% endif %}
+
+                                <!-- show assit player  -->
+                                {% if player in right_team_assist %}
+                                <img src="{% static 'Images/assists.png' %}" alt="Yellow Icon" height="20px" />
+                                {% endif %}
+
+
+
+
+
+                            </li>
+                            {% endfor %}
+                            <br>
+                            <li class=" m-2 p-1"> Coach Name : {{matches.right_team.coach_name}} </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end line up part -->
+
+
+
+
+
+
+
+
+
+
+    <!-- match stats part -->
+    <div class="latest-news section d-none" id="stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 title-section">
+                    <h2 class="heading">STATS</h2>
+                </div>
+            </div>
+
+
+
+
+            <div class="d-flex align-items-center justify-content-center">
+
+                <div class="team-1 w-50">
+
+                    <div class="team-details w-100 text-center">
+                        <ul class="list-unstyled">
+                            <li> Wins: {{team1_wins}}</li>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <div class="team-1 w-50">
+                    <div class="team-details w-100 text-center">
+                        <h4>Head To Head</h4>
+                        <ul class="list-unstyled">
+
+                            <h4>{{total_matches}}</h4>
+
+                            <p>Drows: {{draws}}</p>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <div class="team-2 w-50">
+                    <div class="team-details w-100 text-center">
+
+                        <ul class="list-unstyled">
+
+                            <li>Wins: {{team2_wins}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- all match  -->
+            <div class="">
+                <h4>Recent meetings</h4>
+                {% for match in allmatches %}
+                <div class="  d-flex align-items-center justify-content-center">
+
+                    <a href="{% url 'FootBall:match_detail' match.id team1.id team2.id %}"
+                        class="border m-2 p-3 w-100 d-flex align-items-center justify-content-center btn btn-light ">
+                        <div> {{match.left_team }} <img src="{{ match.left_team.team_logo.url}}" alt="Image"
+                                height="20px">
+                            {{match.left_score}} - {{match.right_score}}
+                            <img src="{{ match.right_team.team_logo.url}}" alt="Image" height="20px">
+                            {{match.right_team}}
+                        </div>
+
+
+                    </a>
+                </div>
+                {% endfor %}
+
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <!-- end line up part -->
+
+
+
+    <!-- match highlight part -->
+    <div class="latest-news section d-none" id="highlights">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 title-section">
+                    <h2 class="heading">Highlights</h2>
+                </div>
+            </div>
+
+            <div class="container col-sm-7">
+                <p>Matche Highlights </p>
+                <div class="item  border p-2 bg-white">
+                    <div class="video-media">
+                        {% if matches.img %}
+                        <img src="{{ matches.img.url }}" alt="{{ v.news_title }} Image" class="img-fluid">
+                        {% endif %}
+                        {% if matches.highlights %}
+                        <a href="{{ matches.highlights.url }}" class="d-flex play-button align-items-center"
+                            data-fancybox>
+                            <span class="icon mr-3">
+                                <span class="icon-play"></span>
+                            </span>
+                            <div class="caption">
+                                <h3 class="m-0">{{ matches.location }}</h3>
+                            </div>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+    <!-- match events part -->
+    <div class="latest-news section d-none" id="timeline">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 title-section">
+                    <h2 class="heading">Events</h2>
+                </div>
+            </div>
+
+            <div class="container col-sm-7">
+                <p>Matche Events </p>
+
+                {% for event in events %}
+                <div href="" class="border m-2 p-3 w-100 align-items-center justify-content-center btn btn-light">
+                    <div class="d-flex  align-items-center justify-content-center ">
+                        <p> {{ event.event_time }}' {{ event.event_type }} - {{ event.player }}
+                            ({{event.player.player_jersey_no}}) </p>
+
+                    </div>
+                </div>
+                {% endfor %}
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- match point table part -->
+<div class="latest-news section d-none" id="pointtbale">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 title-section">
+                <h2 class="heading">Point Table</h2>
+            </div>
+        </div>
+
+        <div class="container col-sm-7">
+
+            <div class="widget-next-match">
+                <table class="table custom-table">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Team</th>
+                            <th>MP</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>G S</th>
+                            <th>G C</th>
+                            <th>Ps</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for team in teams %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td><strong class="text-white">{{ team.team }}</strong></td>
+                            <td>{{ team.matches_played }}</td>
+                            <td>{{ team.wins }}</td>
+                            <td>{{ team.draws }}</td>
+                            <td>{{ team.losses }}</td>
+                            <td>{{ team.goals_scored }}</td>
+                            <td>{{ team.goals_conceded }}</td>
+                            <td>{{ team.points }}</td>
+
+
+                        </tr>
+                        {% endfor %}
+                        <tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $(".mnav-link").click(function (e) {
+            e.preventDefault();
+            // Hide all sections
+            $(".section").addClass("d-none");
+            // Show the target section
+            var target = $(this).data("target");
+            $(target).removeClass("d-none");
+        });
+    });
+</script>
+
+
+{% endblock main-content %}

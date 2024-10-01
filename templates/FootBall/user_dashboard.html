@@ -1,0 +1,159 @@
+{% extends 'bases.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block title %} ICFL {% endblock title %}
+
+{% block main-content %}
+
+
+<div class="site-section bg-light">
+    <div class="container bg-light ">
+
+
+        <div class="row">
+
+            <div class="col-12 title-section mt-2">
+                <a href="" class="heading">User Dashboard</a>
+         
+
+            </div>
+
+
+
+
+            <div class="navbar col-md-12  d-flex justify-content-center mb-4 bg-dark ">
+
+
+                <a href="{% url 'FootBall:team_report_user' %}" class="m-3 "> <span>Team Report</span> </a>
+                <!-- <a href="" class="m-3 "> <span>Matche Report</span> </a> -->
+
+
+
+
+            </div>
+
+
+
+
+
+            <div class="container-fluid ">
+                <div class="clearfix d-flex m-3 p-2 justify-content-center ">
+
+                    <div class=" ">
+                        <a href="{% url 'FootBall:purchased_team_info' %}" class="btn btn-warning py-3 px-4 mr-3">
+                            <h3>{{totalteam}}</h3> Teams
+                        </a>
+                    </div>
+
+                    <div class=" ">
+                        <a href="{% url 'FootBall:player_team_info' %}" class="btn btn-info py-3 px-4 mr-3">
+                            <h3>{{totalplayer}} </h3> Players
+                        </a>
+                    </div>
+
+                    {% if purchases %}
+                    <div class=" ">
+                        <a href="{% url 'FootBall:team_matche_info' %}" class="btn btn-success py-3 px-4 mr-3">
+                            {% for purchase in purchases %}
+                            <h6>{{match_counts}} </h6> Mathce
+                            {% endfor %}
+                        </a>
+                    </div>
+                    {% endif %}
+
+
+
+              
+
+
+                </div>
+
+
+
+
+                <div class="row clearfix">
+                    <div class="col-lg-12  ">
+                        <div class="">
+                            <div class="card-body">
+                                <div class="header text-center bg-light">
+                                    <!-- <a href="">Point Table</a> -->
+                                </div>
+
+
+
+                              
+                                <div>
+                                    {% for purchase in purchases %}
+                                    <div>
+                                        <img src="{{ purchase.teamname.team_logo.url }}"
+                                            alt="{{ purchase.teamname.team_name }} Logo" width="50" height="50">
+                                        {{ purchase.teamname.team_name }} - Status: {{ purchase.status }} - Purchased
+                                        on: {{ purchase.purchase_date }}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+
+
+                                <!-- <div class="widget-next-match">
+                                    <table class="table custom-table">
+                                        <thead>
+                                            <tr>
+                                                <th>SL</th>
+                                                <th>Team</th>
+                                                <th>MP</th>
+                                                <th>W</th>
+                                                <th>D</th>
+                                                <th>L</th>
+                                                <th>G S</th>
+                                                <th>G C</th>
+                                                <th>Ps</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                          
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td><strong class="text-white">{{ team.team }}</strong></td>
+                                                <td>{{ team.matches_played }}</td>
+                                                <td>{{ team.wins }}</td>
+                                                <td>{{ team.draws }}</td>
+                                                <td>{{ team.losses }}</td>
+                                                <td>{{ team.goals_scored }}</td>
+                                                <td>{{ team.goals_conceded }}</td>
+                                                <td>{{ team.points }}</td>
+
+
+                                            </tr>
+                                           
+                                            <tr>
+
+                                        </tbody>
+                                    </table>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock main-content %}

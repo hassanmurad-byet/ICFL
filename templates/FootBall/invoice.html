@@ -1,0 +1,68 @@
+{% extends 'bases.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block title %} ICFL {% endblock title %}
+
+{% block main-content %}
+<!-- 
+<div class="hero overlay" style="background-image: url('{% static 'imagess/bg_1.jpg' %}');">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-lg-12">
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<!-- Display team  -->
+<div class="site-section bg-dark">
+    <div class="container">
+
+
+        <div class="row d-flex justify-content-center m-4">
+            <div class="col-12 title-section">
+                <!-- <h2 class="heading"> Invoice </h2> -->
+            </div>
+
+
+            <div class="col-lg-6 mb-4">
+                <div class="bg-light p-4 rounded">
+                    <div class="widget-body">
+                        <div class="widget-vs">
+
+
+                            <h1>Payment Invoice</h1>
+
+                            <p><strong>Team Name:</strong> {{ purchase.teamname.team_name }}</p>
+                            <p><strong>Coach:</strong> {{ purchase.teamname.coach_name }}</p>
+                            <p><strong>Purchase Date:</strong> {{ purchase.purchase_date }}</p>
+
+                            <h2>Payment Details</h2>
+                            <p><strong>Account Number:</strong> {{ payment.account_number }}</p>
+                            <p><strong>Amount Paid:</strong>{{ payment.amount }} Tk </p>
+                            <p><strong>Payment Date:</strong> {{ payment.payment_date }}</p>
+
+                            <a href="{% url 'FootBall:team_list' %}">Back to Team List</a>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock main-content %}

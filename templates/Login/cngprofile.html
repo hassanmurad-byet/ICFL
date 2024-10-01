@@ -1,0 +1,27 @@
+{% extends 'bases.html' %}
+{% block title_block %} Profile {% endblock %}
+
+
+{% block content %}
+
+<form method="POST" class="signup">
+   {% csrf_token %}
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="firstname">First Name:</label>
+    <input type="text" id="firstname" name="first_name" required>
+
+    <label for="lastname">Last Name:</label>
+    <input type="text" id="lastname" name="last_name" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required> <br>
+
+    <a href="{% url 'App_login:update_password' %}">Change Password</a>
+    
+    <input type="submit" value="Submit" class="btn btn-success">
+</form>
+
+{% endblock content %}

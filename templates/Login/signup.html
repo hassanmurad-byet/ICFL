@@ -1,0 +1,85 @@
+{% extends 'bases.html' %}
+{% load static %}
+
+{% block title %} ICFL Signup {% endblock title %}
+
+
+{% block main-content %}
+
+<section class="signup">
+    <div class="hero overlay" style="background-image: url('{% static 'imagess/bg_1.jpg' %}');">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-10 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card-body p-4">
+                            <h2 class="text-uppercase text-center mt-5">Create an account</h2>
+                            {% if registered %}
+                            <div class="alert alert-success">
+                                Account Created Successfully !
+                            </div>
+
+                            {% endif %}
+
+                            <form method="POST">
+                                {% csrf_token %}
+
+                                <div data-mdb-input-init class="form-outline mb-3">
+                                    <input type="text" id="username" name="username" required
+                                        class="form-control form-control-lg" />
+                                    <label class="form-label" for="form3Example1cg">User Name</label>
+                                </div>
+                                <!-- id="form3Example3cg" -->
+
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input type="email" id="email" name="email" required
+                                        class="form-control form-control-lg" />
+                                    <label class="form-label" for="form3Example3cg">Your Email</label>
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input type="password" id="password1" name="password1" required
+                                        class="form-control form-control-lg" />
+                                    <label class="form-label" for="form3Example4cg">Password</label>
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <input type="password" id="password2" name="password2" required
+                                        class="form-control form-control-lg" />
+                                    <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                                </div>
+
+                                <div class="form-check d-flex justify-content-center mb-5">
+                                    <input class="form-check-input me-2" type="checkbox" value=""
+                                        id="form2Example3cg" />
+
+                                    <label class="form-check-label text-white" for="form2Example3g">
+                                        I agree all statements in <a href="#!" class="text-body">
+                                            <u>Terms of service</u></a>
+                                    </label>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <button data-mdb-button-init type="submit" value="Submit" data-mdb-ripple-init
+                                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                </div>
+
+                                <p class="text-center text-white mt-2 mb-0">Have already an account? <a
+                                        href="{% url 'Login:login' %}" class="fw-bold text-body "><u>Login
+                                            here</u></a></p>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+
+
+{% endblock main-content %}

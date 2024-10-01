@@ -1,0 +1,118 @@
+{% extends 'bases.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block title %} ICFL {% endblock title %}
+
+{% block main-content %}
+
+<!-- <div class="hero overlay" style="background-image: url('{% static 'imagess/bg_1.jpg' %}');">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-12">
+
+                <div class="col-lg-5 ml-auto">
+
+                    <h2 class="text-white">Admin DashBoard</h2>
+                    <p></p>          
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<!-- Display team  -->
+<div class="site-section bg-light">
+    <div class="container bg-light ">
+
+
+        <div class="row">
+
+            <div class="col-12 title-section mt-2">
+                <a href="{% url 'FootBall:admin_dash' %}" class="heading">Admin Dashboard</a>
+            </div>
+
+
+
+
+            <div class="navbar col-md-12  d-flex justify-content-center mb-4 bg-dark ">
+
+
+
+                <a href="{% url 'FootBall:admin_dash' %}" class="m-3 "> <span>Dashboard</span> </a>
+                <a href="{% url 'FootBall:add_league' %}" class="m-3 "> <span>Add League</span> </a>
+                <a href="" class="m-3 "> <span>League</span> </a>
+
+            </div>
+
+            <div class="container-fluid ">
+
+
+                <div class="row clearfix">
+                    <div class="col-lg-12  ">
+                        <div class="">
+                            <div class="card-body">
+                                <div class="header text-center bg-light">
+                                </div>
+
+                                {% for l in league %}
+
+                                <h3>{{ l.league_name }}</h3>
+                                <h6> <i> {{ l.times }} </i></h6>
+                                <div>
+                                    <ul>
+                                        <li>{{l.teams}}</li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        
+                                    </div>
+
+                                    <div class="col-sm-8">
+                                        <p>{{l.info }} <a
+                                                href=" ">Read More</a>
+                                        </p>
+                                        <h6>Posted By:</h6>
+                                        <a href="{% url 'FootBall:update_league' pk=l.pk %}" class="btn btn-info btn-sm">Update</a>
+                                        <a href="{% url 'FootBall:delete_league' del_id=l.id  %}" class="btn btn-danger btn-sm">Delete</a>
+
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <hr>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock main-content %}

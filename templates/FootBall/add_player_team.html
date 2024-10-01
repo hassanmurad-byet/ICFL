@@ -1,0 +1,98 @@
+{% extends 'bases.html' %}
+{% load static %}
+{% load custom_tags %}
+{% load crispy_forms_tags %}
+{% block title %} ICFL add player {% endblock title %}
+
+{% block main-content %}
+
+
+<div class="site-section bg-light">
+    <div class="container bg-light ">
+
+
+        <div class="row">
+
+            <div class="col-12 title-section mt-2">
+                <a href="{% url 'FootBall:user_dashboard' %}" class="heading">User Dashboard</a>
+
+
+            </div>
+
+
+
+
+            <div class="navbar col-md-12  d-flex justify-content-center mb-4 bg-dark ">
+
+
+                
+                <p  class="m-3 "> <span>Add New Player</span> </p>
+
+
+
+
+            </div>
+
+
+
+
+
+            <div class="container-fluid ">
+                <div class="clearfix d-flex m-3 p-2 justify-content-center ">
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+                <div class="row clearfix">
+                    <div class="col-lg-6">
+                        <div class="">
+                            <div class="card-body ">
+                                <div class="header text-center bg-light">
+
+                                </div>
+
+                        
+
+                              
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ player_form| crispy  }}
+                                    <button type="submit">Add Player</button>
+                                </form>
+                        
+                            </div>
+                        </div>
+                    </div>
+  
+
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock main-content %}

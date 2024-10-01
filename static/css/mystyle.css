@@ -1,0 +1,65 @@
+/* navabr user login dropdown */
+
+.dropdowns {
+    display:block;
+    /* margin:15px 0px; */
+    justify-content: center;
+    cursor: pointer;
+   
+  
+  }
+  
+  .dropdown-contents{
+  
+    display: none;
+    position: absolute;
+  
+    text-align: center;
+    background-color: hsl(0, 0%, 98%);
+    border-bottom: #868585;
+    z-index: 1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    top:30px;
+  
+  
+  }
+  
+  .dropdown-contents a {
+    color: rgb(123, 122, 122);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  
+  .dropdown-contents a:hover {
+    color: #0771ae;
+  }
+  
+
+  /* Animation Keyframes */
+  @keyframes dropdownsSlideDowns {
+      0% {
+          max-height: 0;
+          opacity: 0;
+          transform: translateY(20px);
+      }
+      100% {
+          max-height: 200px; 
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  
+  .dropdowns:hover .dropdown-contents {
+    display: block;
+    width: 80px;
+    animation: dropdownsSlideDowns 0.5s forwards ease;
+  }
+  
+
+

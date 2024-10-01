@@ -1,0 +1,101 @@
+{% extends 'bases.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block title %} ICFL {% endblock title %}
+
+{% block main-content %}
+
+
+<div class="site-section bg-light">
+    <div class="container bg-light ">
+
+
+        <div class="row">
+
+            <div class="col-12 title-section mt-2">
+                <a href="{% url 'FootBall:user_dashboard' %}" class="heading">User Dashboard</a>
+
+
+            </div>
+
+
+
+
+            <div class="navbar col-md-12  d-flex justify-content-center mb-4 bg-dark ">
+
+
+
+                <a href="{% url 'FootBall:add_player_team' %}" class="m-3 "> <span>Add Player</span> </a>
+
+
+
+
+            </div>
+
+
+
+
+
+            <div class="container-fluid ">
+                <div class="clearfix d-flex m-3 p-2 justify-content-center ">
+
+
+
+
+
+
+
+                </div>
+
+
+                <div class="row clearfix">
+                    <div class="col-lg-6">
+
+                        <div class="">
+                            <div class="card-body ">
+                                <div class="header text-center bg-light">
+                                    <!-- <a href="">Point Table</a> -->
+                                </div>
+
+                                {% if team %}
+                                <img src="{{ team.team_logo.url }}" alt="Team Logo" width="100">
+                                <p>{{ team.team_name }} <br>
+                                <span>Manager: {{user}} </span> <br>
+                                <span>Coatch: {{ team.coach_name }} </span> </p>
+                                
+
+
+                                {% else %}
+                                <h1>No Purchased Team</h1>
+                                <p>You haven't purchased any team yet, or the purchase has not been accepted by the
+                                    admin.</p>
+                                {% endif %}
+
+
+                                <h3>Players</h3>
+                                <ul>
+                                    {% for player in players %}
+                                    <div> <a  href="{% url 'FootBall:team_player_info' player.id %}">{{ player.player_name }}({{player.player_jersey_no}}) </a> -
+                                        Position: {{ player.play_position }}</div>
+                                    <!-- Customize as per Player model fields -->
+                                    {% endfor %}
+                                </ul>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                 
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+
+{% endblock main-content %}
