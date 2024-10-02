@@ -92,7 +92,7 @@ DATABASES = {
     }
 }
 
-DATABASES["default"] = dj_database_url.parse(config("DATABASE_URL"))
+# DATABASES["default"] = dj_database_url.parse(config("DATABASE_URL"))
 # postgresql://icel_user:BkhLxNvxhFujyAEFzC6nxZGA7PIjEU5c@dpg-crtplm9u0jms73bplrcg-a.singapore-postgres.render.com/icel
 
 
